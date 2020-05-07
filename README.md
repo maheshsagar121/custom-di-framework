@@ -4,8 +4,8 @@ Design and implement a dependency injection framework like spring for singlton a
 
 How to Use:
 
-cd CustomDIFramework/
-mvn clean install -e
+1. cd CustomDIFramework/
+2. mvn clean install -e
 
 Code Architecture
 
@@ -16,5 +16,5 @@ Code Architecture
 
 Limitations:
 
-1. CustomDiInject can not be made parameterised to perform singleton and prototype scope
-2. DI is implemented on simple case scenario. The code can be further inhanced to get Object Graph and complete DI.
+1. CustomDiInject can not be made parameterised to configure singleton and prototype scope
+2. DI is implemented on simple case scenario. The code can be further enhanced to get Object Graph and complete DI.
