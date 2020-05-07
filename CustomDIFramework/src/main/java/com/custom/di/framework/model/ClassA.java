@@ -11,10 +11,10 @@ import com.custom.di.framework.constant.CustomBeanScope;
  *
  */
 public class ClassA {
-	
+
 	@CustomDiInject(scope = CustomBeanScope.SINGLETON)
 	private ClassB classB;
-	
+
 	@CustomDiInject(scope = CustomBeanScope.PROTOTYPE)
 	private ClassC classC;
 
