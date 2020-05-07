@@ -13,6 +13,9 @@ import java.util.Map;
 public enum ErrorConstants {
 
 	DUPLICATE_BEAN_EXCEPTION("Error: Duplicate bean found while initialising bean."),
+	BEANS_LIST_EMPTY("Error: Bean list is empty for register."),
+	BEAN_INIT_ERROR("Error: Bean can not initialise"),
+	INPUT_PARAMETER_IS_NULL("Error: Input parameter is null"),
 	CLASS_NOT_FOUND_EXCEPTION("Error: Class not found while registering the bean.");
 
 	private String errorString;

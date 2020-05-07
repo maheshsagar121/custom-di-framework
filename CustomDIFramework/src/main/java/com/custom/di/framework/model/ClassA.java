@@ -4,7 +4,6 @@
 package com.custom.di.framework.model;
 
 import com.custom.di.framework.annotation.CustomDiInject;
-import com.custom.di.framework.constant.CustomBeanScope;
 
 /**
  * @author mahesh
@@ -12,10 +11,10 @@ import com.custom.di.framework.constant.CustomBeanScope;
  */
 public class ClassA {
 
-	@CustomDiInject(scope = CustomBeanScope.SINGLETON)
+	@CustomDiInject
 	private ClassB classB;
 
-	@CustomDiInject(scope = CustomBeanScope.PROTOTYPE)
+	@CustomDiInject
 	private ClassC classC;
 
 	public ClassB getClassB() {
@@ -32,6 +31,11 @@ public class ClassA {
 
 	public void setClassC(ClassC classC) {
 		this.classC = classC;
+	}
+
+	@Override
+	public String toString() {
+		return "ClassA [classB=" + classB + ", classC=" + classC + "]";
 	}
 
 }

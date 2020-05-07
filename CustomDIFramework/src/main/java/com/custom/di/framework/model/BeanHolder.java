@@ -7,9 +7,9 @@ package com.custom.di.framework.model;
  * @author mahesh
  *
  */
-public class BeanHolder<T> {
+public class BeanHolder {
 	private boolean isInitComplete = false;
-	private T bean = null;
+	private Object bean = null;
 
 	public boolean isInitComplete() {
 		return isInitComplete;
@@ -19,11 +19,11 @@ public class BeanHolder<T> {
 		this.isInitComplete = isInitComplete;
 	}
 
-	public T getBean() {
+	public Object getBean() {
 		return bean;
 	}
 
-	public void setBean(T bean) {
+	public void setBean(Object bean) {
 		this.bean = bean;
 	}
 

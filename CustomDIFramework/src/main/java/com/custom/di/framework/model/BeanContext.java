@@ -3,42 +3,30 @@
  */
 package com.custom.di.framework.model;
 
-import java.util.Map;
-
 /**
  * @author mahesh
  *
  */
-public class BeanContext<T> {
+public class BeanContext {
 
-	private Class<T> beanType;
+	private Class<?> classToInject;
 
-	private BeanHolder<T> singletonBeanHolder;
+	private BeanHolder singletonBeanHolder;
 
-	private Map<String, BeanHolder<T>> prototypeBeanHolderMap;
-
-	public Class<T> getBeanType() {
-		return beanType;
-	}
-
-	public void setBeanType(Class<T> beanType) {
-		this.beanType = beanType;
-	}
-
-	public BeanHolder<T> getSingletonBeanHolder() {
+	public BeanHolder getSingletonBeanHolder() {
 		return singletonBeanHolder;
 	}
 
-	public void setSingletonBeanHolder(BeanHolder<T> singletonBeanHolder) {
+	public void setSingletonBeanHolder(BeanHolder singletonBeanHolder) {
 		this.singletonBeanHolder = singletonBeanHolder;
 	}
 
-	public Map<String, BeanHolder<T>> getPrototypeBeanHolderMap() {
-		return prototypeBeanHolderMap;
+	public Class<?> getClassToInject() {
+		return classToInject;
 	}
 
-	public void setPrototypeBeanHolderMap(Map<String, BeanHolder<T>> prototypeBeanHolderMap) {
-		this.prototypeBeanHolderMap = prototypeBeanHolderMap;
+	public void setClassToInject(Class<?> classToInject) {
+		this.classToInject = classToInject;
 	}
 
 }

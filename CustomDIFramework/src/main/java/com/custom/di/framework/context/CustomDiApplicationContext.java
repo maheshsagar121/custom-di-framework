@@ -3,10 +3,10 @@
  */
 package com.custom.di.framework.context;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import com.custom.di.framework.constant.CustomBeanScope;
+import com.custom.di.framework.exception.CustomDiFrameworkException;
 import com.custom.di.framework.model.BeanContext;
 
 /**
@@ -14,11 +14,27 @@ import com.custom.di.framework.model.BeanContext;
  *
  */
 public interface CustomDiApplicationContext {
-	
-	public static final Map<String,BeanContext> contextMap = new HashMap<String,BeanContext>();
-	
-	public abstract <T> void registerBean(String beanId, Class<T> genericClassType, CustomBeanScope customBeanScope);
-	
-	public abstract<T> void getBean(String beanId, Class<T> genericClassType);
+
+	/**
+	 * @param genericClassType
+	 * @return
+	 * @throws CustomDiFrameworkException
+	 */
+	public abstract BeanContext registerBean(Class<?> genericClassType) throws CustomDiFrameworkException;
+
+	/**
+	 * @param genericClassTypes
+	 * @throws CustomDiFrameworkException
+	 */
+	public abstract void registerBean(List<Class<?>> genericClassTypes) throws CustomDiFrameworkException;
+
+	/**
+	 * @param genericClassType
+	 * @param customBeanScope
+	 * @return
+	 * @throws CustomDiFrameworkException
+	 */
+	public abstract Object getBean(Class<?> genericClassType, CustomBeanScope customBeanScope)
+			throws CustomDiFrameworkException;
 
 }

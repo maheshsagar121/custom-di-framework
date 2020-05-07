@@ -8,8 +8,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.custom.di.framework.constant.CustomBeanScope;
-
 /**
  * @author mahesh
  *
@@ -18,5 +16,4 @@ import com.custom.di.framework.constant.CustomBeanScope;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
 public @interface CustomDiInject {
-	public CustomBeanScope scope() default CustomBeanScope.SINGLETON;
 }
