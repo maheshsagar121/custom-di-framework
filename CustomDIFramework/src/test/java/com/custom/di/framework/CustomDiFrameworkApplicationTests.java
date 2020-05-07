@@ -33,7 +33,6 @@ class CustomDiFrameworkApplicationTests {
 		ClassA classASingletonOne = (ClassA) applicationContext.getBean(ClassA.class, CustomBeanScope.SINGLETON);
 		classASingletonOne.getClassB().setField("testB");
 		classASingletonOne.getClassC().setField("testC");
-		System.out.println(classASingletonOne);
 
 		ClassA classATwo = (ClassA) applicationContext.getBean(ClassA.class, CustomBeanScope.SINGLETON);
 
@@ -60,7 +59,6 @@ class CustomDiFrameworkApplicationTests {
 		ClassA classASingletonOne = (ClassA) applicationContext.getBean(ClassA.class, CustomBeanScope.SINGLETON);
 		classASingletonOne.getClassB().setField("testB");
 		classASingletonOne.getClassC().setField("testC");
-		System.out.println(classASingletonOne);
 
 		ClassA classAPrototype = (ClassA) applicationContext.getBean(ClassA.class, CustomBeanScope.PROTOTYPE);
 

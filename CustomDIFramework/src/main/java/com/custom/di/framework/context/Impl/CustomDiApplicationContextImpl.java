@@ -33,13 +33,15 @@ public class CustomDiApplicationContextImpl implements CustomDiApplicationContex
 	@Override
 	public BeanContext registerBean(Class<?> genericClassType) throws CustomDiFrameworkException {
 
-		if (null == genericClassType) {
-			throw new CustomDiFrameworkException(ErrorConstants.INPUT_PARAMETER_IS_NULL);
-		}
+		synchronized (CustomDiApplicationContextImpl.class) {
+			if (null == genericClassType) {
+				throw new CustomDiFrameworkException(ErrorConstants.INPUT_PARAMETER_IS_NULL);
+			}
 
-		BeanContext beanContext = new BeanContext();
-		beanContext.setClassToInject(genericClassType);
-		return contextMap.put(genericClassType.getName(), beanContext);
+			BeanContext beanContext = new BeanContext();
+			beanContext.setClassToInject(genericClassType);
+			return contextMap.put(genericClassType.getName(), beanContext);
+		}
 
 	}
 
@@ -50,30 +52,30 @@ public class CustomDiApplicationContextImpl implements CustomDiApplicationContex
 	public Object getBean(Class<?> genericClassType, CustomBeanScope customBeanScope)
 			throws CustomDiFrameworkException {
 
-		if (null == genericClassType) {
-			throw new CustomDiFrameworkException(ErrorConstants.INPUT_PARAMETER_IS_NULL);
-		}
+		synchronized (CustomDiApplicationContextImpl.class) {
 
-		if (!isBeanRegistered(genericClassType)) {
-			registerBean(genericClassType);
-			System.out.println("not reg ----------");
-		}
-
-		BeanContext beanContext = getBeanContext(genericClassType);
-
-		if (CustomBeanScope.SINGLETON.equals(customBeanScope)) {
-			if (null == beanContext.getSingletonBeanHolder()) {
-				initBean(beanContext);
-				System.out.println("1----------");
+			if (null == genericClassType) {
+				throw new CustomDiFrameworkException(ErrorConstants.INPUT_PARAMETER_IS_NULL);
 			}
-			System.out.println("2----------");
-			return beanContext.getSingletonBeanHolder().getBean();
-		} else if (CustomBeanScope.PROTOTYPE.equals(customBeanScope)) {
-			// prepare and return prototype bean.
-			System.out.println("3----------");
-			return initBean(beanContext);
+
+			if (!isBeanRegistered(genericClassType)) {
+				registerBean(genericClassType);
+			}
+
+			BeanContext beanContext = getBeanContext(genericClassType);
+
+			if (CustomBeanScope.SINGLETON.equals(customBeanScope)) {
+				if (null == beanContext.getSingletonBeanHolder()) {
+					initBean(beanContext);
+				}
+				return beanContext.getSingletonBeanHolder().getBean();
+			} else if (CustomBeanScope.PROTOTYPE.equals(customBeanScope)) {
+				// prepare and return prototype bean.
+				return initBean(beanContext);
+			}
+			return null;
+
 		}
-		return null;
 	}
 
 	/**
